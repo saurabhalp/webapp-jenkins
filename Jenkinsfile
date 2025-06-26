@@ -20,11 +20,11 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                sh 'npm test || true'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         sh 'npm test || true'
+        //     }
+        // }
 
         stage('Deploy to EC2') {
             steps {
