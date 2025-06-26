@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/your-username/your-repo.git'
+                git credentialsId: '33e25830-f94f-402e-9938-11c9a938fcc5', url: 'https://github.com/saurabhalp/webapp-jenkins.git'
             }
         }
 
