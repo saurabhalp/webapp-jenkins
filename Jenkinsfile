@@ -7,8 +7,10 @@ pipeline {
 
     stages {
         stage('Clone') {
-            steps {
-                git credentialsId: '33e25830-f94f-402e-9938-11c9a938fcc5', url: 'https://github.com/saurabhalp/webapp-jenkins.git'
+           steps {
+                git credentialsId: '33e25830-f94f-402e-9938-11c9a938fcc5',
+                    url: 'https://github.com/saurabhalp/webapp-jenkins.git',
+                    branch: 'main'
             }
         }
 
@@ -26,11 +28,20 @@ pipeline {
 
         stage('Deploy to EC2') {
             steps {
-                sshagent(credentials: ['your-ec2-ssh-cred-id']) {
-                    sh 'scp -o StrictHostKeyChecking=no -r * ubuntu@<ec2-public-ip>:~/app'
-                    sh 'ssh ubuntu@<ec2-public-ip> "pm2 restart app || pm2 start server.js --name app"'
+                sshagent(credentials: ['14552a86-a909-4608-88c0-f58a69eee362']) {
+                    sh '''
+                        echo "Deploying to EC2..."
+                        scp -o StrictHostKeyChecking=no -r * ubuntu@13.201.186.125:~/app
+                        ssh -o StrictHostKeyChecking=no ubuntu@13.201.186.125 "
+                            cd ~/app &&
+                            npm install &&
+                            pm2 restart app || pm2 start server.js --name app
+                        "
+                    '''
                 }
-            }
+    }
+}
+
         }
     }
 }
