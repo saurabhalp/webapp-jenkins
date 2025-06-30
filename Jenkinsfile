@@ -32,7 +32,7 @@ pipeline {
                         sh '''
     echo Deploying to EC2...
     scp -o StrictHostKeyChecking=no -r Jenkinsfile index.js jenkins-demo-terraform node_modules package-lock.json package.json ubuntu@13.201.186.125:~/app
-    ssh -o StrictHostKeyChecking=no ubuntu@13.201.186.125 '
+    ssh -o StrictHostKeyChecking=no ubuntu@52.66.160.159 '
         cd ~/app &&
         npm install &&
         pm2 restart app || pm2 start index.js --name app
