@@ -31,7 +31,7 @@ pipeline {
                 sshagent(credentials: ['14552a86-a909-4608-88c0-f58a69eee362']) {
                         sh '''
     echo Deploying to EC2...
-    scp -o StrictHostKeyChecking=no -r Jenkinsfile index.js jenkins-demo-terraform node_modules package-lock.json package.json ubuntu@13.201.186.125:~/app
+    scp -o StrictHostKeyChecking=no -r Jenkinsfile index.js jenkins-demo-terraform node_modules package-lock.json package.json ubuntu@52.66.160.159:~/app
     ssh -o StrictHostKeyChecking=no ubuntu@52.66.160.159 '
         cd ~/app &&
         npm install &&
