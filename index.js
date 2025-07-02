@@ -122,20 +122,9 @@ app.get('/', (req, res) => {
             <li>Credential security using Jenkins secret management</li>
           </ul>
         </div>
-
-        <div class="section">
-          <h2>Next Enhancements (Planned)</h2>
-          <ul>
-            <li>Integrate automated testing stage (Jest/Mocha)</li>
-            <li>Notify via Slack on successful/failed deployments</li>
-            <li>Enable version tagging and rollback support</li>
-          </ul>
-        </div>
       </main>
 
-      <footer>
-        &copy; 2025 | Node.js CI/CD Project | Saurabh Kumar
-      </footer>
+    
     </body>
     </html>
   `);
